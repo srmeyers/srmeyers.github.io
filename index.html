@@ -11,11 +11,140 @@
 </head>
 <body>
   <h1 class="focus-in-expand"><i class="fas fa-layer-group"></i> Format JSON</h1>
-  <p>Sankara $1,000,0000 coffee!!!!</p>
-  <img src="images/sankara.jpg" alt="Sankara looking for coffee.">
   <div class="main">
-    <p>Comming soon... Format your JSON.</p>
+    <div class="editor-group">
+      <div id="toolbar">
+        <span class="editor-title">JSON One</span>
+        <button id="format-edit-1"><i class="fas fa-stream"></i> Format</button>
+        <button id="paste-1"><i class="fas fa-paste"></i> Paste Over</button>
+      </div>
+      <div id="editor1" class="editor"></div>
+    </div>
+    <div class="editor-group">
+      <span class="editor-title">JSON Two</span>
+      <button id="format-edit-2"><i class="fas fa-stream"></i> Format</button>
+      <button id="paste-2"><i class="fas fa-paste"></i> Paste Over</button>
+      <div id="editor2" class="editor"></div>
+    </div>
   </div>
 
+  <h1 class="focus-in-expand-2"><i class="fas fa-theater-masks"></i> JSON Compare</h1>
+  <div class="editor-group">
+    <span class="editor-title">One vs Two</span>
+    <button id="refresh-diff"><i class="fas fa-not-equal"></i> Load Diff</button>
+    <button id="next-change"><i class="fas fa-arrow-down"></i> Next Change</button>
+    <button id="previous-change"><i class="fas fa-arrow-up"></i> Previous Change</button>
+    <div id="diff-editor" class="diff-editor"></div>
+  </div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.16.2/min/vs/loader.min.js"></script>
+<script>
+  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.16.2/min/vs' }});
+
+  // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
+  // the default worker url location (used when creating WebWorkers). The problem here is that
+  // HTML5 does not allow cross-domain web workers, so we need to proxy the instantiation of
+  // a web worker through a same-domain script
+  window.MonacoEnvironment = {
+    getWorkerUrl: function(workerId, label) {
+      return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+        self.MonacoEnvironment = {
+          baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.16.2/min/'
+        };
+        importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.16.2/min/vs/base/worker/workerMain.js');`
+      )}`;
+    }
+  };
+
+  require(["vs/editor/editor.main"], function () {
+    // ...
+      var editor1 = monaco.editor.create(document.getElementById('editor1'), {
+      value: [
+        '{ "stuff": { "that": [1,2,3], "isin": true, "json": "end"}}',
+      ].join('\n'),
+      language: 'json',
+      tabSize: 2,
+      formatOnPaste: true,
+      minimap: { enabled: false }
+    });
+
+    document.getElementById("format-edit-1").addEventListener("click", formatJson1)
+    function formatJson1() {
+      editor1.getAction("editor.action.formatDocument").run()
+    }
+
+    document.getElementById("paste-1").addEventListener("click", paste1)
+    function paste1() {
+      navigator.clipboard.readText().then(
+        clipText => {
+          editor1.setValue(clipText)
+          editor1.getAction("editor.action.formatDocument").run()
+        }
+      )
+    }
+
+
+
+
+    var editor2 = monaco.editor.create(document.getElementById('editor2'), {
+      value: [
+        '{ "stuff": { "that": [1,2,3], "isin": true, "json": "end"}}',
+      ].join('\n'),
+      language: 'json',
+      tabSize: 2,
+      formatOnPaste: true,
+      minimap: { enabled: false }
+    });
+
+    document.getElementById("format-edit-2").addEventListener("click", formatJson2)
+    function formatJson2() {
+      editor2.getAction("editor.action.formatDocument").run()
+    }
+
+    document.getElementById("paste-2").addEventListener("click", paste2)
+    function paste2() {
+      navigator.clipboard.readText().then(
+        clipText => {
+          editor2.setValue(clipText)
+          editor2.getAction("editor.action.formatDocument").run()
+        }
+      )
+    }
+
+
+    var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json");
+    var modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json");
+
+    var diffEditor = monaco.editor.createDiffEditor(document.getElementById("diff-editor"));
+
+    var navi = monaco.editor.createDiffNavigator(diffEditor, {
+      followsCaret: true, // resets the navigator state when the user selects something in the editor
+      ignoreCharChanges: true // jump from line to line
+    });
+
+    document.getElementById("refresh-diff").addEventListener("click", switchToDiff)
+
+    function switchToDiff() {
+      originalModel = monaco.editor.createModel(editor1.getValue(), "text/json");
+      modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json");
+      diffEditor.setModel({
+        original: originalModel,
+        modified: modifiedModel
+      });
+    }
+
+    document.getElementById("next-change").addEventListener("click", nextDiff)
+    function nextDiff() {
+      navi.next()
+    }
+
+    document.getElementById("previous-change").addEventListener("click", previousDiff)
+    function previousDiff() {
+      navi.previous()
+    }
+
+  });
+</script>
 </body>
 </html>
