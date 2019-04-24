@@ -1,0 +1,73 @@
+body {
+  background-color: #f4f6f9;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #0062cc;
+  border-bottom: 5px solid #6c757d;
+  width: 300px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.main {
+  display: flex;
+}
+.editor {
+  width:800px;
+  height:600px;
+  border:1px solid #6c757d;
+}
+
+.editor-group {
+  margin-bottom: 25px;
+}
+.editor-title {
+  font-weight: 700;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.diff-editor {
+  width:1600px;
+  height:600px;
+  /* border:1px solid #6c757d; */
+}
+
+button {
+  color: #007bff;
+  background-color: #ffffff;
+  border-color: #6c757d;
+  height: 1.5rem;
+  border-bottom: none;
+  border-radius: .5rem .5rem 0 0;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+button:hover {
+  color: #ffffff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.focus-in-expand {
+	animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.focus-in-expand-2 {
+	animation: focus-in-expand 1s .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
