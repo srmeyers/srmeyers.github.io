@@ -64,6 +64,7 @@ button:hover {
   color: white;
   background-color: DodgerBlue;
   padding: 20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
