@@ -16,6 +16,7 @@
       <div id="toolbar">
         <span class="editor-title">JSON One</span>
         <button id="format-edit-1"><i class="fas fa-stream"></i> Format</button>
+        <button id="minify-1"><i class="fas fa-microscope"></i> Minify </button>
         <button id="paste-1"><i class="fas fa-paste"></i> Paste Over</button>
       </div>
       <div id="editor1" class="editor"></div>
@@ -23,6 +24,7 @@
     <div class="editor-group">
       <span class="editor-title">JSON Two</span>
       <button id="format-edit-2"><i class="fas fa-stream"></i> Format</button>
+      <button id="minify-2"><i class="fas fa-microscope"></i> Minify </button>
       <button id="paste-2"><i class="fas fa-paste"></i> Paste Over</button>
       <div id="editor2" class="editor"></div>
     </div>
@@ -90,8 +92,17 @@
       )
     }
 
+    document.getElementById("minify-1").addEventListener("click", minify1)
+    function minify1() {
+      const newText = JSON.stringify(JSON.parse(editor1.getValue()), null, 0)
+      editor1.setValue(newText)
+    }
 
-
+    document.getElementById("minify-2").addEventListener("click", minify2)
+    function minify2() {
+      const newText = JSON.stringify(JSON.parse(editor2.getValue()), null, 0)
+      editor2.setValue(newText)
+    }
 
     var editor2 = monaco.editor.create(document.getElementById('editor2'), {
       value: [
