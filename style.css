@@ -7,7 +7,7 @@ body {
 h1 {
   color: #0062cc;
   border-bottom: 5px solid #6c757d;
-  width: 300px;
+  width: 285px;
 }
 
 img {
@@ -45,6 +45,15 @@ button {
   border-bottom: none;
   border-radius: .5rem .5rem 0 0;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.other-format-div {
+  width:1600px;
+  z-index: 5;
+}
+.other-format {
+  float: right;
+  font-weight: bolder;
+  z-index: 5;
 }
 
 .formatJson_box {
