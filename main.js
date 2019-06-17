@@ -91,10 +91,10 @@ require(["vs/editor/editor.main"], function () {
 
 
 
-  var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json");
-  var modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json");
+  var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
+  var modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json")
 
-  var diffEditor = monaco.editor.createDiffEditor(document.getElementById("diff-editor"));
+  var diffEditor = monaco.editor.createDiffEditor(document.getElementById("diff-editor"))
 
   var navi = monaco.editor.createDiffNavigator(diffEditor, {
     followsCaret: true, // resets the navigator state when the user selects something in the editor
@@ -104,8 +104,8 @@ require(["vs/editor/editor.main"], function () {
   document.getElementById("refresh-diff").addEventListener("click", switchToDiff)
 
   function switchToDiff() {
-    originalModel = monaco.editor.createModel(editor1.getValue(), "text/json");
-    modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json");
+    originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
+    modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json")
     diffEditor.setModel({
       original: originalModel,
       modified: modifiedModel
@@ -122,4 +122,49 @@ require(["vs/editor/editor.main"], function () {
     navi.previous()
   }
 
+  function layout() {
+    var GLOBAL_PADDING = 20
+
+    var WIDTH = window.innerWidth - 2 * GLOBAL_PADDING
+    var HEIGHT = window.innerHeight
+
+    var TITLE_HEIGHT = 36 + 5 + 15
+    var FOOTER_HEIGHT = 10
+    var TABS_HEIGHT = 20 + 2 + 2
+    var INNER_PADDING = 0
+
+    var HALF_WIDTH = Math.floor((WIDTH - INNER_PADDING) / 2)
+    var REMAINING_HEIGHT = HEIGHT - TITLE_HEIGHT - FOOTER_HEIGHT - TABS_HEIGHT - FOOTER_HEIGHT
+
+    document.getElementById('editor1').style.width = HALF_WIDTH + 'px'
+    document.getElementById('editor2').style.width = HALF_WIDTH + 'px'
+    document.getElementById('diff-editor').style.width = WIDTH + 'px'
+
+    document.getElementById('editor1').style.height = REMAINING_HEIGHT + 'px'
+    document.getElementById('editor2').style.height = REMAINING_HEIGHT + 'px'
+    document.getElementById('diff-editor').style.height = REMAINING_HEIGHT + 'px'
+    document.getElementsByClassName('other-format-div')[0].style.width = WIDTH + 'px'
+
+    if (diffEditor) {
+      diffEditor.layout({
+        width: WIDTH,
+        height: REMAINING_HEIGHT
+      })
+    }
+    if (editor1) {
+      editor1.layout({
+        width: HALF_WIDTH,
+        height: REMAINING_HEIGHT
+      })
+    }
+    if (editor2) {
+      editor2.layout({
+        width: HALF_WIDTH,
+        height: REMAINING_HEIGHT
+      })
+    }
+  }
+
+  layout()
+  window.onresize = layout
 });
