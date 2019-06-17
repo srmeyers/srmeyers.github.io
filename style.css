@@ -1,7 +1,9 @@
 body {
   background-color: #f4f6f9;
   font-family: sans-serif;
-  padding: 20px;
+  margin: 5px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h1 {
@@ -48,7 +50,6 @@ button {
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 .other-format-div {
-  width:1600px;
   z-index: 5;
 }
 .other-format {
