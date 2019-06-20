@@ -33,6 +33,21 @@ require(["vs/editor/editor.main"], function () {
     editor1.getAction("editor.action.formatDocument").run()
   }
 
+  document.getElementById("font-zoom-in").addEventListener("click", fontZoomIn)
+  function fontZoomIn() {
+    editor1.getAction("editor.action.fontZoomIn").run()
+  }
+
+  document.getElementById("font-zoom-out").addEventListener("click", fontZoomOut)
+  function fontZoomOut() {
+    editor1.getAction("editor.action.fontZoomOut").run()
+  }
+
+  document.getElementById("font-zoom-reset").addEventListener("click", fontZoomReset)
+  function fontZoomReset() {
+    editor1.getAction("editor.action.fontZoomReset").run()
+  }
+
   document.getElementById("paste-1").addEventListener("click", paste1)
   function paste1() {
     navigator.clipboard.readText().then(
