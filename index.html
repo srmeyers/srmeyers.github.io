@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="other-format-div"><a href="xml.html" class="other-format"> <i class="fas fa-code"></i> Format XML</a></div>
-  <h1 class="focus-in-expand"><i class="fas fa-layer-group"></i> Format JSON</h1>
+  <h1 class="focus-in-expand" id="top"><i class="fas fa-layer-group"></i> Format JSON</h1>
   <div class="main">
     <div class="editor-group">
       <div id="toolbar">
@@ -23,9 +23,10 @@
         <button id="minify-1"><i class="fas fa-microscope"></i> Minify </button>
         <button id="paste-1"><i class="fas fa-paste"></i> Paste Over</button>
         <button id="clear-1"><i class="fas fa-trash-alt"></i> Clear </button>
-        <button id="font-zoom-in"><i class="fas fa-caret-up"></i> Larger</button>
+        <button id="font-zoom-in"><i class="fas fa-search-plus"></i> Larger</button>
         <button id="font-zoom-reset"><i class="fas fa-font"></i> Reset</button>
-        <button id="font-zoom-out"><i class="fas fa-caret-down"></i> Smaller</button>
+        <button id="font-zoom-out"><i class="fas fa-search-minus"></i> Smaller</button>
+        <button id="compare-json"><i class="fas fa-not-equal"></i> <a href="#compareJosn" > Load Diff </a></button>
       </div>
       <div id="editor1" class="editor"></div>
     </div>
@@ -39,12 +40,14 @@
     </div>
   </div>
 
-  <h1><i class="fas fa-theater-masks"></i> JSON Compare</h1>
+  <h1 id="compareJosn"><i class="fas fa-theater-masks"></i> JSON Compare</h1>
   <div class="editor-group">
     <span class="editor-title">One vs Two</span>
     <button id="refresh-diff"><i class="fas fa-not-equal"></i> Load Diff</button>
     <button id="next-change"><i class="fas fa-arrow-down"></i> Next Change</button>
     <button id="previous-change"><i class="fas fa-arrow-up"></i> Previous Change</button>
+
+    <button id="back-top"><i class="fas fa-arrow-circle-up"></i> <a href="#top" >Back to Top </a></button>
     <div id="diff-editor" class="diff-editor"></div>
   </div>
 

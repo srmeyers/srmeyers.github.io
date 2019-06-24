@@ -50,6 +50,17 @@ button {
   border-radius: .5rem .5rem 0 0;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+#back-top{
+  margin-left: 310px;
+  font-weight: bolder;
+}
+
+#compare-json{
+  margin-left: 80px;
+  font-weight: bolder;
+}
+
 .other-format-div {
   z-index: 5;
 }

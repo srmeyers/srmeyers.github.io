@@ -119,6 +119,8 @@ require(["vs/editor/editor.main"], function () {
   });
 
   document.getElementById("refresh-diff").addEventListener("click", switchToDiff)
+  document.getElementById("compare-json").addEventListener("click", switchToDiff)
+
 
   function switchToDiff() {
     originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
