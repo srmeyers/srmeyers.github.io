@@ -61,6 +61,15 @@ button {
   font-weight: bolder;
 }
 
+#compareJson{
+  color: #0062cc;
+  margin: 0 0 15px 0;
+  font-weight: bolder;
+  font-size: xx-large;
+  border-bottom: 5px solid #6c757d;
+  width: 285px;
+}
+
 .other-format-div {
   z-index: 5;
 }
