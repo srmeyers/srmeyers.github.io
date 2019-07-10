@@ -76,7 +76,8 @@
         acceptButton.classList.remove('disabled')
       }
     }
-    frameDocument.body.onscroll = handleScroll
+    frameDocument.addEventListener('scroll', handleScroll)
+    // frameDocument.body.onscroll = handleScroll
 
   </script>
 </body>
