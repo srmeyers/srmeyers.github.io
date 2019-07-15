@@ -19,7 +19,7 @@ require(["vs/editor/editor.main"], function () {
   // ...
     var editor1 = monaco.editor.create(document.getElementById('editor1'), {
     value: [
-      '{ "stuff": { "that": [1,2,3], "isin": true, "json": "end"}}',
+      '{ "stuff": { "that": [1,3,5], "isin": false, "json": "end"}}',
     ].join('\n'),
     language: 'json',
     tabSize: 2,

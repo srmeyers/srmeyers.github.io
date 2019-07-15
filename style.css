@@ -7,10 +7,16 @@ body {
 }
 
 h1 {
-  color: #0062cc;
+  color: white;
   margin: 0 0 15px 0;
-  border-bottom: 5px solid #6c757d;
   width: 285px;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.fullbleed-wrap {
+  background-color: #1165ed;
 }
 
 img {
@@ -62,21 +68,26 @@ button {
 }
 
 #compareJson{
-  color: #0062cc;
+  color: white;
   margin: 0 0 15px 0;
+  padding-left: 10px;
   font-weight: bolder;
   font-size: xx-large;
-  border-bottom: 5px solid #6c757d;
   width: 285px;
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 .other-format-div {
   z-index: 5;
 }
 .other-format {
+  color: white;
+  margin-top: 18px;
   float: right;
   font-weight: bolder;
   z-index: 5;
+  padding-right: 20px;
 }
 
 .formatJson_box {
