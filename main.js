@@ -30,7 +30,16 @@ require(["vs/editor/editor.main"], function () {
 
   document.getElementById("format-edit-1").addEventListener("click", formatJson1)
   function formatJson1() {
+    var jsonString = validateJson(editor1.getValue())
+    editor1.setValue(jsonString)
     editor1.getAction("editor.action.formatDocument").run()
+  }
+
+  function validateJson(json){
+    var tempRes = json.replace("msg=\"", "message");
+    var res = tempRes.replace("https://", "www.");
+    return res
+
   }
 
   document.getElementById("font-zoom-in").addEventListener("click", fontZoomIn)
@@ -52,7 +61,8 @@ require(["vs/editor/editor.main"], function () {
   function paste1() {
     navigator.clipboard.readText().then(
       clipText => {
-        editor1.setValue(clipText)
+        var jsonString = validateJson(clipText)
+        editor1.setValue(jsonString)
         editor1.getAction("editor.action.formatDocument").run()
       }
     )
@@ -88,6 +98,8 @@ require(["vs/editor/editor.main"], function () {
 
   document.getElementById("format-edit-2").addEventListener("click", formatJson2)
   function formatJson2() {
+    var jsonString = validateJson(editor2.getValue())
+    editor2.setValue(jsonString)
     editor2.getAction("editor.action.formatDocument").run()
   }
 
@@ -95,7 +107,8 @@ require(["vs/editor/editor.main"], function () {
   function paste2() {
     navigator.clipboard.readText().then(
       clipText => {
-        editor2.setValue(clipText)
+        var jsonString = validateJson(clipText)
+        editor2.setValue(jsonString)
         editor2.getAction("editor.action.formatDocument").run()
       }
     )
