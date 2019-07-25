@@ -11,8 +11,8 @@ h1 {
   margin: 0 0 15px 0;
   width: 285px;
   padding-left: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 4px;
 }
 
 .fullbleed-wrap {
@@ -122,13 +122,12 @@ button:hover {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 100px;
-  background-color: black;
+  background-color: #0069d9;
   color: #fff;
   text-align: center;
   border-radius: 6px;
