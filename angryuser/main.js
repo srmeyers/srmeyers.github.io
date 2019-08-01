@@ -17,22 +17,30 @@ window.MonacoEnvironment = {
 
 require(["vs/editor/editor.main"], function () {
   // ...
-    var editor1 = monaco.editor.create(document.getElementById('editor1'), {
+
+  var localValue = localStorage.getItem("editor1Json")
+  var defaultValue = '{ "stuff": { "that": [1,3,5], "isin": false, "json": "end"}}'
+  var finalValue = localValue ? localValue : defaultValue
+  var editor1 = monaco.editor.create(document.getElementById('editor1'), {
     value: [
-      '{ "stuff": { "that": [1,3,5], "isin": false, "json": "end"}}',
+      finalValue,
     ].join('\n'),
     language: 'json',
     tabSize: 2,
-    fontSize:15,
+    fontSize: 12,
     formatOnPaste: true,
-    minimap: { enabled: false }
+    formatOnLoad: true,
+    minimap: {enabled: false}
   });
+
+
 
   document.getElementById("format-edit-1").addEventListener("click", formatJson1)
   function formatJson1() {
     var jsonString = validateJson(editor1.getValue())
     editor1.setValue(jsonString)
     editor1.getAction("editor.action.formatDocument").run()
+    localStorage.setItem("editor1Json",editor1.getValue())
   }
 
   function validateJson(json){
@@ -64,8 +72,16 @@ require(["vs/editor/editor.main"], function () {
         var jsonString = validateJson(clipText)
         editor1.setValue(jsonString)
         editor1.getAction("editor.action.formatDocument").run()
+        localStorage.setItem("editor1Json",editor1.getValue())
       }
     )
+  }
+
+  document.getElementById("copy-1").addEventListener("click", copyToClipboard)
+  function copyToClipboard() {
+    var copyText = editor1.getValue();
+    navigator.clipboard.writeText(copyText)
+    document.execCommand("copy");
   }
 
   document.getElementById("minify-1").addEventListener("click", minify1)
@@ -77,6 +93,7 @@ require(["vs/editor/editor.main"], function () {
   document.getElementById("clear-1").addEventListener("click", clear1)
   function clear1() {
     editor1.setValue('')
+    localStorage.removeItem("editor1Json")
   }
 
 
