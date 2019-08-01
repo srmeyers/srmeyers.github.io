@@ -23,7 +23,7 @@ require(["vs/editor/editor.main"], function () {
     ].join('\n'),
     language: 'json',
     tabSize: 2,
-    fontSize:15,
+    fontSize:12,
     formatOnPaste: true,
     minimap: { enabled: false }
   });
@@ -91,7 +91,7 @@ require(["vs/editor/editor.main"], function () {
     ].join('\n'),
     language: 'json',
     tabSize: 2,
-    fontSize:15,
+    fontSize:12,
     formatOnPaste: true,
     minimap: { enabled: false }
   });
