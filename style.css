@@ -26,6 +26,9 @@ img {
 .main {
   display: flex;
 }
+#toolbar {
+  display: flex;
+}
 .editor {
   width:800px;
   height:600px;
