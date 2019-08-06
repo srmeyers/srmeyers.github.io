@@ -1,0 +1,107 @@
+body {
+  background-color: #f4f6f9;
+  font-family: sans-serif;
+  margin: 5px 19px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+.main {
+  display: flex;
+}
+.editor {
+  width:900px;
+  height:600px;
+  border:1px solid #6c757d;
+}
+
+.editor-group {
+  margin-bottom: 5px;
+}
+.editor-title {
+  font-weight: 700;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#toolbar {
+  display: flex;
+}
+
+
+.other-format-div {
+  z-index: 5;
+}
+.other-format {
+  color: white;
+  margin-top: 18px;
+  float: right;
+  font-weight: bolder;
+  z-index: 5;
+  padding-right: 20px;
+}
+
+
+.focus-in-expand {
+	animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.focus-in-expand-2 {
+	animation: focus-in-expand 1s .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.formatJson_box {
+  color: #99af83;
+  background-color: #ed1111;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {float: none;}
+}
+
+
+ @keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
