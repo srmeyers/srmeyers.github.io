@@ -25,6 +25,7 @@ require(["vs/editor/editor.main"], function () {
     tabSize: 2,
     fontSize:12,
     formatOnPaste: true,
+      links:true,
     minimap: { enabled: false }
   });
 
@@ -36,10 +37,9 @@ require(["vs/editor/editor.main"], function () {
   }
 
   function validateJson(json){
-    var tempRes = json.replace("msg=\"", "message");
-    var res = tempRes.replace("https://", "www.");
+    var tempres = json.replace("msg=\"", "message").trim();
+    var res = tempres.replace("requestUri=http://", "requestUri=http:/");
     return res
-
   }
 
   document.getElementById("font-zoom-in").addEventListener("click", fontZoomIn)
