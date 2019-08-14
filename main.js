@@ -38,8 +38,9 @@ require(["vs/editor/editor.main"], function () {
 
   function validateJson(json){
     var tempres = json.replace("msg=\"", "message").trim();
-    var res = tempres.replace("requestUri=http://", "requestUri=http:/");
-    return res
+    var res = tempres.replace("requestUri=http://", "requestUri=www.").trim();
+    var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim();
+    return finalRes
   }
 
   document.getElementById("font-zoom-in").addEventListener("click", fontZoomIn)
