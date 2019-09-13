@@ -26,6 +26,7 @@ require(["vs/editor/editor.main"], function () {
     fontSize:12,
     formatOnPaste: true,
       links:true,
+      showFoldingControls:"always",
     minimap: { enabled: false }
   });
 
@@ -94,6 +95,7 @@ require(["vs/editor/editor.main"], function () {
     tabSize: 2,
     fontSize:12,
     formatOnPaste: true,
+    showFoldingControls:"always",
     minimap: { enabled: false }
   });
 

@@ -34,6 +34,7 @@ require(["vs/editor/editor.main"], function () {
     cursorStyle:"block",
     scrollBeyondLastLine:false,
     mouseWheelZoom:true,
+    showFoldingControls:"always",
     minimap: {enabled: false}
   });
 
