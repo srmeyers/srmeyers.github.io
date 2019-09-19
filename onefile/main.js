@@ -35,6 +35,7 @@ require(["vs/editor/editor.main"], function () {
     scrollBeyondLastLine:false,
     mouseWheelZoom:true,
     showFoldingControls:"always",
+    theme:"vs-dark",
     minimap: {enabled: false}
   });
 
