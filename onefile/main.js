@@ -17,7 +17,7 @@ window.MonacoEnvironment = {
 
 
 if (!navigator.clipboard || !navigator.clipboard.readText) {
-  document.getElementById("paste-1").hidden = true
+  document.getElementById("paste-1-li").hidden = true
 }
 
 require(["vs/editor/editor.main"], function () {
