@@ -1,11 +1,15 @@
 body {
-  background-color: #2f302f;
-  font-family: sans-serif;
-  margin: 5px 19px;
-  padding-left: 0;
-  padding-right: 0;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font: normal 16px/1.4em -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
 }
-
+}
 
 img {
   max-width: 100%;
@@ -17,7 +21,7 @@ img {
 .editor {
   width:900px;
   height:600px;
-  border:1px solid #6c757d;
+  border:1px solid #ADD6FF26;
 }
 
 .editor-group {
@@ -69,20 +73,22 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #ffffff;
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
   display: block;
-  color: white;
+  color: #265988;;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover:not(.active) {
+  background-color: #ADD6FF26;
+}
 
 ul.topnav li a.active {background-color: #4CAF50;}
 
@@ -105,3 +111,53 @@ ul.topnav li.right {float: right;}
     opacity: 1;
   }
 }
+
+body.vs-dark {
+  background-color: #1e1e1e;
+}
+
+body.vs-dark .nav a {
+  color: white;
+}
+
+body.vs-dark .dropdown-menu {
+  background-color: black;
+  color: white;
+}
+
+body.vs-dark .select select {
+  color: black;
+}
+
+body.vs-dark .navbar-sub div.info {
+  color: white;
+}
+
+body.vs-dark .examples > div .section-list ol li a:hover {
+  color: #187ABF;
+}
+
+body.vs-dark .nav>li>a:focus, body.dark .nav>li>a:hover {
+  background-color: #4e4e4e;
+}
+
+body.vs-dark .dropdown-menu>li>a:focus, body.dark .dropdown-menu>li>a:hover {
+  background-color: #4e4e4e;
+}
+
+body.vs-dark .nav .open>a, body.dark .nav .open>a:focus, body.dark .nav .open>a:hover {
+  background-color: #4e4e4e;
+}
+
+body.vs-dark .nav>li>a:focus, body.dark .nav>li>a:hover {
+  background-color: #4e4e4e;
+}
+
+body.vs-dark ul.topnav {
+  background-color: #333333;
+}
+
+body.vs-dark ul.topnav li a {
+  color: #ffffff;
+}
+

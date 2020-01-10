@@ -1,4 +1,4 @@
-require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.18.1/min/vs' }});
+require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.19.2/min/vs' }});
 
 // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
 // the default worker url location (used when creating WebWorkers). The problem here is that
@@ -8,14 +8,30 @@ window.MonacoEnvironment = {
   getWorkerUrl: function(workerId, label) {
     return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
       self.MonacoEnvironment = {
-        baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.18.1/min/'
+        baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.19.2/min/'
       };
-      importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.18.1/min/vs/base/worker/workerMain.js');`
+      importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.19.2/min/vs/base/worker/workerMain.js');`
     )}`;
   }
 };
 
+// Color theme:
+function setEditorTheme(theme) {
+  const newTheme = theme
+    ? theme
+    : localStorage
+    ? localStorage.getItem("editor-theme") || "vs-light"
+    : "vs-light";
+  monaco.editor.setTheme(newTheme);
 
+  localStorage.setItem("editor-theme", newTheme);
+
+  // Sets the theme on the body so CSS can change between themes
+  document.body.classList.remove("vs-light", "vs-dark")
+  document.body.classList.add(newTheme)
+}
+
+// If browser doesn't support paste, hide button
 if (!navigator.clipboard || !navigator.clipboard.readText) {
   document.getElementById("paste-1-li").hidden = true
 }
@@ -26,6 +42,7 @@ require(["vs/editor/editor.main"], function () {
   var localValue = localStorage.getItem("editor1Json")
   var defaultValue = '{ "stuff": { "that": [1,3,5], "isin": false, "json": "end"}}'
   var finalValue = localValue ? localValue : defaultValue
+  setEditorTheme()
   var editor1 = monaco.editor.create(document.getElementById('editor1'), {
     value: [
       finalValue,
@@ -40,7 +57,6 @@ require(["vs/editor/editor.main"], function () {
     scrollBeyondLastLine:false,
     mouseWheelZoom:true,
     showFoldingControls:"always",
-    theme:"vs-dark",
     minimap: {enabled: false}
   });
 
@@ -76,6 +92,16 @@ require(["vs/editor/editor.main"], function () {
     editor1.getAction("editor.action.fontZoomReset").run()
   }
 
+  document.getElementById('toggle-theme').addEventListener('click', toggleTheme)
+  function toggleTheme() {
+    if (document.querySelector('body').className.includes('vs-dark')) {
+      setEditorTheme('vs-light')
+    } else {
+      setEditorTheme('vs-dark')
+    }
+  }
+
+
   document.getElementById("paste-1").addEventListener("click", paste1)
   function paste1() {
     navigator.clipboard.readText().then(
@@ -109,17 +135,12 @@ require(["vs/editor/editor.main"], function () {
 
 
   function layout() {
-    var GLOBAL_PADDING = 20
-
-    var WIDTH = window.innerWidth - 2 * GLOBAL_PADDING
+    var WIDTH = window.innerWidth
     var HEIGHT = window.innerHeight
 
     var TITLE_HEIGHT = 36 + 5 + 15
     var FOOTER_HEIGHT = 10
     var TABS_HEIGHT = 20 + 2 + 2
-    var INNER_PADDING = 0
-
-    var HALF_WIDTH = Math.floor((WIDTH - INNER_PADDING) / 2)
     var REMAINING_HEIGHT = HEIGHT - TITLE_HEIGHT - FOOTER_HEIGHT - TABS_HEIGHT - FOOTER_HEIGHT
 
     document.getElementById('editor1').style.width = WIDTH + 'px'
