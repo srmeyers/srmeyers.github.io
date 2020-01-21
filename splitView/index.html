@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="description" content="JSON :: Format JSON helps to format and validate json data. JSON formatter also provides tree view which helps to navigate through your JSON data.">
+  <meta name="keywords" content="JSON , Format json, JSON Validator, json lint, validate json, JSON format, JSON Formatter, JSON Viewer, json online, JSON Editor Online, json validator, Best JSON Viewer, Free Online JSON Formatter, JSON file format, Format JSON file, JSON View, Jedit, Online JSON Formatter, JSON Editor, JSON compare, compare JSON, JSON diff, Json data format, Json string format, Compare two json files">
+  <title>Format JSON </title>
+
+  <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection">
+  <link href="css/textarea.css" type="text/css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body>
+
+<input type="hidden" id="reformat" value="1" />
+<input type="hidden" id="compress" value="0" />
+
+<div id="json-placeholder"></div>
+
+  <div id="results_header" class="hide">
+    <h3>
+      Results <img title="Loading..." class="reset" alt="Loading" src="images/spinner.gif" id="spinner" name="spinner">
+    </h3>
+  </div>
+
+  <script type="text/javascript">
+    if (typeof JSON === 'undefined') {
+      document.write('<sc' + 'ript type="text/javascript" src="js/utils/json_two.js"></sc' + 'ript>');
+    }
+  </script>
+  <script src="js/main.js"></script>
+  <script src="js/fjs.format.js"></script>
+  <script src="js/fjs.parser.js"></script>
+
+</body>
+</html>
