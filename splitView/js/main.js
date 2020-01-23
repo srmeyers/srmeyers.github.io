@@ -471,9 +471,9 @@ var utils = {
 };
 
 var jsonCompositeTemplate = '<div id="json-composite"><div id="validator-placeholder1"></div><div id="validator-placeholder2"></div><div id="diff-placeholder"></div></div>',
-    validatorTemplate = '<form class="JSONValidate" method="post" action="." name="JSONValidate"><textarea class="json_input" name="json_input" class="json_input" rows="30" cols="100" spellcheck="false" placeholder="Enter json data to validate"></textarea><a href="#" title="Run validation" class="button validate"><span class="icon">Lint Me!</span></a><a href="#" title="Compare two JSON sets" class="button split-view"><span class="icon">Split View</span></a>	<a href="#" title="Delete the current data" class="button reset"><span class="icon">Reset</span></a><a href="#" title="Validate and compare Json" class="button diff"><span class="icon">Diff</span></a></form>',
+    validatorTemplate = '<form class="JSONValidate" method="post" action="." name="JSONValidate"><textarea class="json_input" name="json_input" class="json_input" rows="30" cols="100" spellcheck="false" placeholder="Enter json data to validate"></textarea><a href="#" title="Validation Json" class="button validate"><span class="icon">Lint Me!</span></a><a href="#" title="Compare two JSON files" class="button split-view"><span class="icon">Split View</span></a>	<a href="#" title="Clear Json data" class="button reset"><span class="icon">Reset</span></a><a href="#" title="Validate and compare Json data" class="button diff"><span class="icon">Diff</span></a></form>',
     errorTemplate = '<div class="error-view"><a class="close-btn" href="#">X</a><span class="arrow-down"></span><pre class="results"></pre></div>',
-    diffTemplate = '<div id="diff-view"><a href="#" title="Validate and compare Json" class="button diff"><span class="icon">Diff</span></a><a href="#" title="Cancel diff" class="button cancel-diff"><span class="icon">Cancel diff</span></a><div class="json_input" contenteditable="true"></div></div>';
+    diffTemplate = '<div id="diff-view"><a href="#" title="Validate and compare Json" class="button diff"><span class="icon">Diff</span></a><a href="#" title="Close compare page" class="button cancel-diff"><span class="icon">Cancel diff</span></a><div class="json_input" contenteditable="true"></div></div>';
 
 
 var FADE_SPEED = 100,
