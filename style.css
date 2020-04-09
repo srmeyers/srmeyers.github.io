@@ -91,6 +91,12 @@ button {
   font-weight: bolder;
   z-index: 5;
   padding-right: 20px;
+  text-decoration: none;
+  transition: color .15s ease-in-out;
+}
+
+.other-format:hover {
+  color: black;
 }
 
 .formatJson_box {
