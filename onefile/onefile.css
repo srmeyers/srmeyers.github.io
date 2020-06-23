@@ -1,0 +1,196 @@
+body {
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font: normal 16px/1.4em -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+.main {
+  display: flex;
+}
+.editor {
+  width:900px;
+  height:600px;
+  border:1px solid #ADD6FF26;
+}
+
+.editor-group {
+  margin-bottom: 5px;
+}
+.editor-title {
+  font-weight: 700;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#toolbar {
+  display: flex;
+}
+
+.focus-in-expand {
+	animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.focus-in-expand-2 {
+	animation: focus-in-expand 1s .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.formatJson_box {
+  color: #99af83;
+  background-color: #ed1111;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+span.btn-text {
+  display:none;
+}
+
+
+/* Small devices and up*/
+@media (min-width: 600px) {
+  span.btn-text.show-sm {
+    display: inline-block;
+    margin-left: 8px;
+  }
+}
+
+/* Medium devices and up */
+@media (min-width: 768px) {
+  span.btn-text.show-md {
+    display: inline-block;
+    margin-left: 8px;
+  }
+}
+
+/* Large devices and up */
+@media (min-width: 992px) {
+  span.btn-text.show-lg {
+    display: inline-block;
+    margin-left: 8px;
+  }
+}
+/**
+  * Reset button styles
+  * It takes some work to achieve a “blank slate” look.
+  */
+  button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+  cursor: pointer;
+}
+
+/**
+  * Button component
+  */
+.btn {
+  /* default for <button>, but needed for <a> */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+
+  /* create a small space when buttons wrap on 2 lines */
+  margin: 2px 0;
+
+  /* invisible border (will be colored on hover/focus) */
+  border: solid 1px transparent;
+  border-radius: 0;
+
+  /* button size comes from text + padding, avoid height */
+  padding: 0.5em 1em;
+
+  /* make sure colors have enough contrast! */
+  color: #265988;
+  background-color: #f4f6f9;
+}
+
+/* old-school "down" effect on clic + color tweak */
+.btn:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+
+/* inverse colors on hover */
+.btn:hover {
+  color: #265988;
+  border-color: currentColor;
+  background-color: white;
+}
+
+/* Firefox: remove the inner border shown on focus */
+.btn::-moz-focus-inner {
+  border: none;
+}
+
+/* make sure we have a visible focus ring */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(105, 165, 255, 0.5),
+    0 0 0 1.5px rgba(105, 165, 255, 0.5);
+}
+
+/* hide focus style if not from keyboard navigation */
+.js-focus-visible .btn:focus:not(.focus-visible) {
+  box-shadow: none;
+}
+
+ @keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+body.vs-dark {
+  background-color: #1e1e1e;
+}
+
+body.vs-dark .nav a {
+  color: white;
+}
+
+body.vs-dark .select select {
+  color: black;
+}
+
+body.vs-dark .examples > div .section-list ol li a:hover {
+  color: #187ABF;
+}
+
+body.vs-dark nav.topnav .btn:hover {
+  color: white;
+  background-color: #4e4e4e;
+  border-color: #4e4e4e;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+body.vs-dark nav.topnav {
+  background-color: #333333;
+}
+
+body.vs-dark nav.topnav .btn {
+  color: rgb(174, 175, 173);
+  background-color: #333333;
+}
+

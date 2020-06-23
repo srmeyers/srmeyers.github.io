@@ -11,24 +11,22 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.8.1/js/all.js"></script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/onefile/onefile.css">
     <title>Format JSON</title>
 </head>
 <body>
 <div>
-    <ul class="topnav">
-        <li><a id="format-edit-1" href="#"><i class="fas fa-stream"></i> Format </a></li>
-        <li><a id="minify-1" href="#"><i class="fas fa-microscope"></i> Minify </a></li>
-        <li id="paste-1-li"><a id="paste-1" href="#"><i class="fas fa-paste"></i> Paste Over </a></li>
-        <li><a id="clear-1" href="#"><i class="fas fa-trash-alt"></i> Clear </a></li>
-        <li><a id="copy-1" href="#"><i class="fas fa-clipboard"></i> Copy to Clipboard </a></li>
-        <li><a id="font-zoom-in" href="#"><i class="fas fa-search-plus"></i> Larger </a></li>
-        <li><a id="font-zoom-reset" href="#"><i class="fas fa-font"></i> Reset </a></li>
-        <li><a id="font-zoom-out" href="#"><i class="fas fa-search-minus"></i> Smaller </a></li>
-        <li><a id="toggle-theme" href="#"><i class="fas fa-adjust"></i> Theme </a></li>
-
-        <li class="right"><a href="https://formatjson.com" target="_blank"> <i class="fas fa-layer-group"></i> Format JSON </a></li>
-    </ul>
+    <nav class="topnav">
+        <button class="btn" id="format-edit-1" title="Format"><i class="fas fa-stream"></i><span class="btn-text show-sm">Format</span></button>
+        <button class="btn" id="minify-1" title="Minify"><i class="fas fa-microscope"></i><span class="btn-text show-sm">Minify</span></button>
+        <button class="btn" id="paste-1-li" title="Paste Over"><a id="paste-1"><i class="fas fa-paste"></i><span class="btn-text show-md">Paste Over</span></button>
+        <button class="btn" id="clear-1" title="Clear"><i class="fas fa-trash-alt"></i><span class="btn-text show-md">Clear</span></button>
+        <button class="btn" id="copy-1" title="Copy"><i class="fas fa-clipboard"></i><span class="btn-text show-md">Copy</span></button>
+        <button class="btn" id="font-zoom-in" title="Larger"><i class="fas fa-search-plus"></i><span class="btn-text show-lg">Larger</span></button>
+        <button class="btn" id="font-zoom-reset" title="Reset"><i class="fas fa-font"></i><span class="btn-text show-lg">Reset</span></button>
+        <button class="btn" id="font-zoom-out" title="Smaller"><i class="fas fa-search-minus"></i><span class="btn-text show-lg">Smaller</span></button>
+        <button class="btn" id="toggle-theme" title="Theme"><i class="fas fa-adjust"></i><span class="btn-text show-lg">Theme</span></button>
+    </nav>
 </div>
 <div class="main">
     <div class="editor-group">
@@ -43,7 +41,7 @@
     const theme = localStorage.getItem("editor-theme")
     document.body.classList.add(theme)
 </script>
-<script src="./main.js"></script>
+<script src="/onefile/onefile.js"></script>
 </body>
 </html>
 
