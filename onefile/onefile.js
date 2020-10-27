@@ -1,4 +1,4 @@
-require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/vs' }});
+require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
 
 // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
 // the default worker url location (used when creating WebWorkers). The problem here is that
@@ -8,9 +8,9 @@ window.MonacoEnvironment = {
   getWorkerUrl: function(workerId, label) {
     return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
       self.MonacoEnvironment = {
-        baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/'
+        baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/'
       };
-      importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.20.0/min/vs/base/worker/workerMain.js');`
+      importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/base/worker/workerMain.js');`
     )}`;
   }
 };
