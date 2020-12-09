@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.js"></script>
+
+  <link rel="stylesheet" href="./uuid.css">
+  <title>UUID</title>
+</head>
+<body>
+  <header>
+    <i class="fas fa-globe"></i> Universally Unique Identifier Generator
+  </header>
+  <main>
+    <div>
+      <label for="uuid">UUID: </label>
+      <input type="text" id="uuid" size="38" readonly ></input>
+    </div>
+    <div class="buttons">
+      <button class="btn" id="id-new" title="Format"><i class="fas fa-redo-alt"></i> <span class="btn-text">New ID</span></button>
+      <button class="btn" id="id-copy" title="Format"><i class="fas fa-copy"></i> <span class="btn-text ">Copy</span></button>
+    </div>
+  </main>
+
+  <footer>
+    <nav class="ftrNav">
+      <a href="/">Format JSON</a> | <a href="/onefile">Format One JSON</a> | <a href="/xml.html">Format XML</a></footer>
+    </nav>
+  <script src="./uuid.js"></script>
+</script>
+</body>
+</html>
