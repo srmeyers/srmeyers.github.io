@@ -53,7 +53,6 @@ require(["vs/editor/editor.main"], function () {
     formatOnPaste: true,
     formatOnType:true,
     formatOnLoad: true,
-    cursorStyle:"block",
     scrollBeyondLastLine:false,
     mouseWheelZoom:true,
     showFoldingControls:"always",
