@@ -7,7 +7,7 @@
   <meta name="description" content="xml :: Format xml helps to format and validate xml data. xml formatter also provides tree view which helps to navigate through your xml data. You can compare your two xml files and identify differences.">
   <meta name="keywords" content="xml , Format xml, xml Validator, xml lint, validate xml, xml format, xml Formatter, xml Viewer, xml online, xml Editor Online, xml validator, Best xml Viewer, Free Online xml Formatter, xml file format, Format xml file, xml View, Jedit, Online xml Formatter, xml Editor, xml compare, compare xml, xml diff, xml data format, xml string format, Compare two xml files">
   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-  <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.8.1/js/all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/js/all.js"></script>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <title>Format XML</title>
@@ -50,9 +50,9 @@
   </div>
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs/loader.min.js"></script>
 <script>
-  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
+  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs' }});
 
   // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
   // the default worker url location (used when creating WebWorkers). The problem here is that
@@ -62,9 +62,9 @@
     getWorkerUrl: function(workerId, label) {
       return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
         self.MonacoEnvironment = {
-          baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/'
+          baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/'
         };
-        importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/base/worker/workerMain.js');`
+        importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs/base/worker/workerMain.js');`
       )}`;
     }
   };
