@@ -59,10 +59,6 @@ require(["vs/editor/editor.main"], function() {
   }
 
   function validateJson(json) {
-      // var isValidJson = isJsonString(json)
-      // if (!isValidJson) {
-      //     alert("JSON is not valid. Please fix the issue and try again")
-      // }
       var tempres = json.replace("msg=\"", "message").trim();
       var res = tempres.replace("requestUri=http://", "requestUri=www.").trim();
       var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim();
