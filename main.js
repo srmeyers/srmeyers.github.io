@@ -42,9 +42,9 @@ require(["vs/editor/editor.main"], function() {
   });
 
 function validateJson(json) {
-    var tempres = json.replace("msg=\"", "message").trim();
-    var res = tempres.replace("requestUri=http://", "requestUri=www.").trim();
-    var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim();
+    var tempres = json.replace("msg=\"", "message").trim()
+    var res = tempres.replace("requestUri=http://", "requestUri=www.").trim()
+    var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim()
     return finalRes
 }
 
@@ -58,28 +58,22 @@ function isJsonString(inputJson) {
 }
 
 function isArray(value) {
-    return Object.prototype.toString.call(value) === '[object Array]';
+    return Object.prototype.toString.call(value) === '[object Array]'
 }
 
 function isPlainObject(value) {
-    return Object.prototype.toString.call(value) === '[object Object]';
+    return Object.prototype.toString.call(value) === '[object Object]'
 }
 
 function sortObject(unorderedObject) {
-    var noarray = false;
-
-    var orderedObject = {};
+    var noarray = false
+    var orderedObject = {}
 
     if (isArray(unorderedObject)) {
         // Sort or don't sort arrays
-        if (noarray) {
-            orderedObject = unorderedObject;
-        } else {
-            orderedObject = unorderedObject.sort();
-        }
-
+        orderedObject = noarray ? unorderedObject : unorderedObject.sort()
         orderedObject.forEach(function(v, i) {
-            orderedObject[i] = sortObject(v, noarray);
+            orderedObject[i] = sortObject(v, noarray)
         });
 
         if (!noarray) {
@@ -90,19 +84,18 @@ function sortObject(unorderedObject) {
             });
         }
     } else if (isPlainObject(unorderedObject)) {
-        orderedObject = {};
+        orderedObject = {}
         Object.keys(unorderedObject).sort(function(a, b) {
-            if (a.toLowerCase() < b.toLowerCase()) return -1;
-            if (a.toLowerCase() > b.toLowerCase()) return 1;
-            return 0;
+            if (a.toLowerCase() < b.toLowerCase()) return -1
+            if (a.toLowerCase() > b.toLowerCase()) return 1
+            return 0
         }).forEach(function(key) {
-            orderedObject[key] = sortObject(unorderedObject[key], noarray);
+            orderedObject[key] = sortObject(unorderedObject[key], noarray)
         });
     } else {
-        orderedObject = unorderedObject;
+        orderedObject = unorderedObject
     }
-
-    return orderedObject;
+    return orderedObject
 }
 
   document.getElementById("format-edit-1").addEventListener("click", formatJson1)
