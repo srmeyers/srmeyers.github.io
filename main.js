@@ -1,6 +1,6 @@
 require.config({
   paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/vs'
   }
 });
 
@@ -12,9 +12,9 @@ window.MonacoEnvironment = {
   getWorkerUrl: function(workerId, label) {
       return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
   self.MonacoEnvironment = {
-    baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/'
+    baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/'
   };
-  importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs/base/worker/workerMain.js');`
+  importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/vs/base/worker/workerMain.js');`
 )}`;
   }
 };
@@ -41,50 +41,86 @@ require(["vs/editor/editor.main"], function() {
       }
   });
 
-  document.getElementById("format-edit-1").addEventListener("click", formatJson1)
+function validateJson(json) {
+    var tempres = json.replace("msg=\"", "message").trim()
+    var res = tempres.replace("requestUri=http://", "requestUri=www.").trim()
+    var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim()
+    return finalRes
+}
 
+function isJsonString(inputJson) {
+    try {
+        JSON.parse(inputJson)
+    } catch (e) {
+        return false
+    }
+    return true
+}
+
+function isArray(value) {
+    return Object.prototype.toString.call(value) === '[object Array]'
+}
+
+function isPlainObject(value) {
+    return Object.prototype.toString.call(value) === '[object Object]'
+}
+
+function sortObject(unorderedObject) {
+    var noarray = false
+    var orderedObject = {}
+
+    if (isArray(unorderedObject)) {
+        // Sort or don't sort arrays
+        orderedObject = noarray ? unorderedObject : unorderedObject.sort()
+        orderedObject.forEach(function(v, i) {
+            orderedObject[i] = sortObject(v, noarray)
+        });
+
+        if (!noarray) {
+            orderedObject = orderedObject.sort(function(a, b) {
+                a = JSON.stringify(a);
+                b = JSON.stringify(b);
+                return a < b ? -1 : (a > b ? 1 : 0);
+            });
+        }
+    } else if (isPlainObject(unorderedObject)) {
+        orderedObject = {}
+        Object.keys(unorderedObject).sort(function(a, b) {
+            if (a.toLowerCase() < b.toLowerCase()) return -1
+            if (a.toLowerCase() > b.toLowerCase()) return 1
+            return 0
+        }).forEach(function(key) {
+            orderedObject[key] = sortObject(unorderedObject[key], noarray)
+        });
+    } else {
+        orderedObject = unorderedObject
+    }
+    return orderedObject
+}
+
+  document.getElementById("format-edit-1").addEventListener("click", formatJson1)
   function formatJson1() {
       var jsonString = validateJson(editor1.getValue())
       editor1.setValue(jsonString)
       editor1.getAction("editor.action.formatDocument").run()
   }
 
-  function isJsonString(inputJson) {
-      try {
-          JSON.parse(inputJson)
-      } catch (e) {
-          return false
-      }
-      return true
-  }
-
-  function validateJson(json) {
-      var tempres = json.replace("msg=\"", "message").trim();
-      var res = tempres.replace("requestUri=http://", "requestUri=www.").trim();
-      var finalRes = res.replace("requestUri=https://", "requestUri=www.").trim();
-      return finalRes
-  }
-
   document.getElementById("font-zoom-in").addEventListener("click", fontZoomIn)
-
   function fontZoomIn() {
       editor1.getAction("editor.action.fontZoomIn").run()
   }
 
   document.getElementById("font-zoom-out").addEventListener("click", fontZoomOut)
-
   function fontZoomOut() {
       editor1.getAction("editor.action.fontZoomOut").run()
   }
 
   document.getElementById("font-zoom-reset").addEventListener("click", fontZoomReset)
-
   function fontZoomReset() {
       editor1.getAction("editor.action.fontZoomReset").run()
   }
 
   document.getElementById("paste-1").addEventListener("click", paste1)
-
   function paste1() {
       navigator.clipboard.readText().then(
           clipText => {
@@ -96,83 +132,33 @@ require(["vs/editor/editor.main"], function() {
   }
 
   document.getElementById("minify-1").addEventListener("click", minify1)
-
   function minify1() {
       const newText = JSON.stringify(JSON.parse(editor1.getValue()), null, 0)
       editor1.setValue(newText)
   }
 
   document.getElementById("clear-1").addEventListener("click", clear1)
-
   function clear1() {
       editor1.setValue('')
   }
 
-  // Is it an array?
-  function isArray(val) {
-      return Object.prototype.toString.call(val) === '[object Array]';
-  }
-
-  function isPlainObject(val) {
-      return Object.prototype.toString.call(val) === '[object Object]';
-  }
-
-  function sortObject(unorderedObject) {
-      var noarray = false;
-
-      var orderedObject = {};
-
-      if (isArray(unorderedObject)) {
-          // Sort or don't sort arrays
-          if (noarray) {
-              orderedObject = unorderedObject;
-          } else {
-              orderedObject = unorderedObject.sort();
-          }
-
-          orderedObject.forEach(function(v, i) {
-              orderedObject[i] = sortObject(v, noarray);
-          });
-
-          if (!noarray) {
-              orderedObject = orderedObject.sort(function(a, b) {
-                  a = JSON.stringify(a);
-                  b = JSON.stringify(b);
-                  return a < b ? -1 : (a > b ? 1 : 0);
-              });
-          }
-      } else if (isPlainObject(unorderedObject)) {
-          orderedObject = {};
-          Object.keys(unorderedObject).sort(function(a, b) {
-              if (a.toLowerCase() < b.toLowerCase()) return -1;
-              if (a.toLowerCase() > b.toLowerCase()) return 1;
-              return 0;
-          }).forEach(function(key) {
-              orderedObject[key] = sortObject(unorderedObject[key], noarray);
-          });
-      } else {
-          orderedObject = unorderedObject;
-      }
-
-      return orderedObject;
-  }
-
   document.getElementById("sortJson-1").addEventListener("click", sortJson1)
-
   function sortJson1() {
-      var jsonString = validateJson(editor1.getValue())
+    var jsonString = validateJson(editor1.getValue())
+    var isInputJsonValid = isJsonString(jsonString)
+    if (isInputJsonValid) {
       var jsonAsJSObject = JSON.parse(jsonString, null, 0)
       var orderedJsonAsJSObject = sortObject(jsonAsJSObject)
-
       var sortedJson = JSON.stringify(orderedJsonAsJSObject)
-      console.log(`Json String = > ${sortedJson}`)
 
       editor1.setValue(sortedJson)
       editor1.getAction("editor.action.formatDocument").run()
-  }
+    } else {
+        alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+    }
+}
 
   document.getElementById("minify-2").addEventListener("click", minify2)
-
   function minify2() {
       const newText = JSON.stringify(JSON.parse(editor2.getValue()), null, 0)
       editor2.setValue(newText)
@@ -192,9 +178,7 @@ require(["vs/editor/editor.main"], function() {
       }
   });
 
-
   document.getElementById("format-edit-2").addEventListener("click", formatJson2)
-
   function formatJson2() {
       var jsonString = validateJson(editor2.getValue())
       editor2.setValue(jsonString)
@@ -202,7 +186,6 @@ require(["vs/editor/editor.main"], function() {
   }
 
   document.getElementById("paste-2").addEventListener("click", paste2)
-
   function paste2() {
       navigator.clipboard.readText().then(
           clipText => {
@@ -214,23 +197,24 @@ require(["vs/editor/editor.main"], function() {
   }
 
   document.getElementById("clear-2").addEventListener("click", clear2)
-
   function clear2() {
       editor2.setValue('')
   }
 
   document.getElementById("sortJson-2").addEventListener("click", sortJson2)
-
   function sortJson2() {
       var jsonString = validateJson(editor2.getValue())
-      var jsonAsJSObject = JSON.parse(jsonString, null, 0)
-      var orderedJsonAsJSObject = sortObject(jsonAsJSObject)
+      var isInputJsonValid = isJsonString(jsonString)
+      if (isInputJsonValid) {
+        var jsonAsJSObject = JSON.parse(jsonString, null, 0)
+        var orderedJsonAsJSObject = sortObject(jsonAsJSObject)
+        var sortedJson = JSON.stringify(orderedJsonAsJSObject)
 
-      var sortedJson = JSON.stringify(orderedJsonAsJSObject)
-      console.log(`Json String = > ${sortedJson}`)
-
-      editor2.setValue(sortedJson)
-      editor2.getAction("editor.action.formatDocument").run()
+        editor2.setValue(sortedJson)
+        editor2.getAction("editor.action.formatDocument").run()
+      } else {
+        alert("JSON in Editor 2 is invalid. Please fix the issues with JSON and try again")
+    }
   }
 
   var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
@@ -257,13 +241,11 @@ require(["vs/editor/editor.main"], function() {
   }
 
   document.getElementById("next-change").addEventListener("click", nextDiff)
-
   function nextDiff() {
       navi.next()
   }
 
   document.getElementById("previous-change").addEventListener("click", previousDiff)
-
   function previousDiff() {
       navi.previous()
   }
