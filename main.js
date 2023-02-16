@@ -98,6 +98,30 @@ function sortObject(unorderedObject) {
     return orderedObject
 }
 
+function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
+    var pathObject = {}
+    for (var key in inputObject) {
+        if ( isPlainObject(inputObject[key]) ) {
+            var objectConversion = getPathObjectForInputObject(inputObject[key], parentKeyPath + key + '.')
+            pathObject[`${parentKeyPath + key }`] = objectConversion
+        } else if ( isArray(inputObject[key]) ) {
+            if(isPlainObject(inputObject[key][0])) {
+                var arrayObject = []
+                for (let i=0; i<inputObject[key].length; i++  ) {
+                    var objectConversion = getPathObjectForInputObject(inputObject[key][i], parentKeyPath + key + `[${i}]`+'.')
+                    arrayObject.push(objectConversion)
+                }
+                pathObject[`${parentKeyPath + key }`] = arrayObject
+            } else {
+            pathObject[`${parentKeyPath + key }`] = inputObject[key]
+            }
+        } else {
+        pathObject[`${parentKeyPath + key }`] = inputObject[key] 
+        }
+    }
+    return pathObject
+}
+
   document.getElementById("format-edit-1").addEventListener("click", formatJson1)
   function formatJson1() {
       var jsonString = validateJson(editor1.getValue())
@@ -156,6 +180,23 @@ function sortObject(unorderedObject) {
     } else {
         alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
     }
+}
+
+document.getElementById("jsonPath").addEventListener("click", generateJsonPath)
+function generateJsonPath() {
+  var jsonString = validateJson(editor1.getValue())
+  var isInputJsonValid = isJsonString(jsonString)
+  if (isInputJsonValid) {
+    var jsonAsJSObject = JSON.parse(jsonString, null, 0)
+    var jsonPathObject = getPathObjectForInputObject(jsonAsJSObject)
+    var pathJson = JSON.stringify(jsonPathObject)
+
+    editor1.getAction("editor.action.formatDocument").run()
+    editor2.setValue(pathJson)
+    editor2.getAction("editor.action.formatDocument").run()
+  } else {
+      alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+  }
 }
 
   document.getElementById("minify-2").addEventListener("click", minify2)
