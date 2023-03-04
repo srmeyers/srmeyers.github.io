@@ -107,7 +107,7 @@ function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
         } else if ( isArray(inputObject[key]) ) {
             if(isPlainObject(inputObject[key][0])) {
                 var arrayObject = []
-                for (let i=0; i<inputObject[key].length; i++  ) {
+                for (var i=0; i<inputObject[key].length; i++  ) {
                     var objectConversion = getPathObjectForInputObject(inputObject[key][i], parentKeyPath + key + `[${i}]`+'.')
                     arrayObject.push(objectConversion)
                 }
@@ -200,7 +200,7 @@ function generateJsonPath() {
 }
 
 function downloadFile(data) {
-    let a = document.createElement("a");
+    var a = document.createElement("a");
     var name = ""
     while(name == "") {
         name = prompt("Enter file name", "fileSavedFromFormatJson.json")
