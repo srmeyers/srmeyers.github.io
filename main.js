@@ -178,7 +178,7 @@ function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
       editor1.setValue(sortedJson)
       editor1.getAction("editor.action.formatDocument").run()
     } else {
-        alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+        alert("JSON One is invalid. Please fix the issues with JSON and try again")
     }
 }
 
@@ -195,7 +195,7 @@ function generateJsonPath() {
     editor2.setValue(pathJson)
     editor2.getAction("editor.action.formatDocument").run()
   } else {
-      alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+      alert("JSON One is invalid. Please fix the issues with JSON and try again")
   }
 }
 
@@ -224,6 +224,13 @@ document.getElementById("download-1").addEventListener("click", download1)
 function download1() {
     var content = validateJson(editor1.getValue())
     downloadFile(content)
+}
+
+document.getElementById("copy-1").addEventListener("click", copyToClipboard)
+function copyToClipboard() {
+  var copyText = editor1.getValue();
+  navigator.clipboard.writeText(copyText)
+  document.execCommand("copy");
 }
 
   document.getElementById("minify-2").addEventListener("click", minify2)
@@ -281,7 +288,7 @@ function download1() {
         editor2.setValue(sortedJson)
         editor2.getAction("editor.action.formatDocument").run()
       } else {
-        alert("JSON in Editor 2 is invalid. Please fix the issues with JSON and try again")
+        alert("JSON Two is invalid. Please fix the issues with JSON and try again")
     }
   }
 
@@ -289,6 +296,13 @@ function download1() {
   function download2() {
     var content = validateJson(editor2.getValue())
     downloadFile(content)
+}
+
+document.getElementById("copy-2").addEventListener("click", copyToClipboard2)
+function copyToClipboard2() {
+  var copyText = editor2.getValue();
+  navigator.clipboard.writeText(copyText)
+  document.execCommand("copy");
 }
 
   var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
