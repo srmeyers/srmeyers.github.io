@@ -199,6 +199,33 @@ function generateJsonPath() {
   }
 }
 
+function downloadFile(data) {
+    let a = document.createElement("a");
+    var name = ""
+    while(name == "") {
+        name = prompt("Enter file name", "fileSavedFromFormatJson.json")
+        if(name == "") {
+            alert("File name cannot be empty. Please enter a name with .json as file extension")
+        }
+    }
+    if (!name ) {
+        return 0
+    }
+    a.download = name;
+    a.href = URL.createObjectURL(new Blob([data], {
+        type: "application/json"
+    }));
+    a.click()
+    URL.revokeObjectURL(a.href)
+    a.remove()
+}
+
+document.getElementById("download-1").addEventListener("click", download1)
+function download1() {
+    var content = validateJson(editor1.getValue())
+    downloadFile(content)
+}
+
   document.getElementById("minify-2").addEventListener("click", minify2)
   function minify2() {
       const newText = JSON.stringify(JSON.parse(editor2.getValue()), null, 0)
@@ -257,6 +284,12 @@ function generateJsonPath() {
         alert("JSON in Editor 2 is invalid. Please fix the issues with JSON and try again")
     }
   }
+
+  document.getElementById("download-2").addEventListener("click", download2)
+  function download2() {
+    var content = validateJson(editor2.getValue())
+    downloadFile(content)
+}
 
   var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
   var modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json")
