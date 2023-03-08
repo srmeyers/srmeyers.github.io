@@ -107,7 +107,7 @@ function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
         } else if ( isArray(inputObject[key]) ) {
             if(isPlainObject(inputObject[key][0])) {
                 var arrayObject = []
-                for (let i=0; i<inputObject[key].length; i++  ) {
+                for (var i=0; i<inputObject[key].length; i++  ) {
                     var objectConversion = getPathObjectForInputObject(inputObject[key][i], parentKeyPath + key + `[${i}]`+'.')
                     arrayObject.push(objectConversion)
                 }
@@ -178,7 +178,7 @@ function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
       editor1.setValue(sortedJson)
       editor1.getAction("editor.action.formatDocument").run()
     } else {
-        alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+        alert("JSON One is invalid. Please fix the issues with JSON and try again")
     }
 }
 
@@ -195,8 +195,42 @@ function generateJsonPath() {
     editor2.setValue(pathJson)
     editor2.getAction("editor.action.formatDocument").run()
   } else {
-      alert("JSON in Editor 1 is invalid. Please fix the issues with JSON and try again")
+      alert("JSON One is invalid. Please fix the issues with JSON and try again")
   }
+}
+
+function downloadFile(data) {
+    var a = document.createElement("a");
+    var name = ""
+    while(name == "") {
+        name = prompt("Enter file name", "fileSavedFromFormatJson.json")
+        if(name == "") {
+            alert("File name cannot be empty. Please enter a name with .json as file extension")
+        }
+    }
+    if (!name ) {
+        return 0
+    }
+    a.download = name;
+    a.href = URL.createObjectURL(new Blob([data], {
+        type: "application/json"
+    }));
+    a.click()
+    URL.revokeObjectURL(a.href)
+    a.remove()
+}
+
+document.getElementById("download-1").addEventListener("click", download1)
+function download1() {
+    var content = validateJson(editor1.getValue())
+    downloadFile(content)
+}
+
+document.getElementById("copy-1").addEventListener("click", copyToClipboard)
+function copyToClipboard() {
+  var copyText = editor1.getValue();
+  navigator.clipboard.writeText(copyText)
+  document.execCommand("copy");
 }
 
   document.getElementById("minify-2").addEventListener("click", minify2)
@@ -254,9 +288,22 @@ function generateJsonPath() {
         editor2.setValue(sortedJson)
         editor2.getAction("editor.action.formatDocument").run()
       } else {
-        alert("JSON in Editor 2 is invalid. Please fix the issues with JSON and try again")
+        alert("JSON Two is invalid. Please fix the issues with JSON and try again")
     }
   }
+
+  document.getElementById("download-2").addEventListener("click", download2)
+  function download2() {
+    var content = validateJson(editor2.getValue())
+    downloadFile(content)
+}
+
+document.getElementById("copy-2").addEventListener("click", copyToClipboard2)
+function copyToClipboard2() {
+  var copyText = editor2.getValue();
+  navigator.clipboard.writeText(copyText)
+  document.execCommand("copy");
+}
 
   var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
   var modifiedModel = monaco.editor.createModel(editor2.getValue(), "text/json")
