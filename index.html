@@ -1,114 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="JSON :: Format JSON helps to format and validate json data. JSON formatter also provides tree view which helps to navigate through your JSON data. Welcome to FormatJSON, the ultimate JSON formatting tool that provides a fast, efficient, and secure way to format your JSON data. Our goal is to create a user-friendly and reliable tool that is accessible to everyone, regardless of technical knowledge or internet connection.
-At FormatJSON, we believe in protecting the privacy and security of our users. That's why our tool is designed to be completely offline, ensuring that no data is saved or shared with anyone. Our tool is 100% client-side, meaning that all data remains on your device and is never transmitted to a server or saved in the cloud.
-With FormatJSON, you can easily format your JSON data without the need for an internet connection. Simply load the page and you're ready to go. Our user-friendly interface allows you to quickly and easily format your JSON data into a readable and well-structured format. Whether you're a developer working with large amounts of data, or someone who simply wants to view JSON data in a more organized format, FormatJSON has got you covered.
-We take pride in our commitment to providing users with a high-quality and reliable service. Our team is dedicated to continually improving our tool to ensure that it meets the needs of our users. We welcome feedback and suggestions, and are always looking for ways to make our tool even better.
-Try FormatJSON today and see why it's the ultimate JSON formatting tool. With its fast, efficient, and secure features, you won't be disappointed. Whether you're working offline or online, FormatJSON is the perfect tool to help you quickly and easily format your JSON data.">
-    <meta name="keywords" content="JSON , Format json, JSON Validator, json lint, validate json, JSON format, JSON Formatter, JSON Viewer, json online, JSON Editor Online, json validator, Best JSON Viewer, Free Online JSON Formatter, JSON file format, Format JSON file, JSON View, Jedit, Online JSON Formatter, JSON Editor, JSON compare, compare JSON, JSON diff, Json data format, Json string format, Compare two json files, the ultimate JSON formatting tool that provides a fast, efficient, and secure way to format your JSON data. Our goal is to create a user-friendly and reliable tool that is accessible to everyone, regardless of technical knowledge or internet connection.
-At FormatJSON, we believe in protecting the privacy and security of our users. That's why our tool is designed to be completely offline, ensuring that no data is saved or shared with anyone. Our tool is 100% client-side, meaning that all data remains on your device and is never transmitted to a server or saved in the cloud.
-With FormatJSON, you can easily format your JSON data without the need for an internet connection. Simply load the page and you're ready to go. Our user-friendly interface allows you to quickly and easily format your JSON data into a readable and well-structured format. Whether you're a developer working with large amounts of data, or someone who simply wants to view JSON data in a more organized format, FormatJSON has got you covered.
-We take pride in our commitment to providing users with a high-quality and reliable service. Our team is dedicated to continually improving our tool to ensure that it meets the needs of our users. We welcome feedback and suggestions, and are always looking for ways to make our tool even better.
-Try FormatJSON today and see why it's the ultimate JSON formatting tool. With its fast, efficient, and secure features, you won't be disappointed. Whether you're working offline or online, FormatJSON is the perfect tool to help you quickly and easily format your JSON data.">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-      if($(window).width() <= 950) {
-        window.location = "https://formatjson.com/onefile/";
-      }
-    });
-  </script>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <title>Format JSON</title>
-</head>
-<body>
-<div class="fullbleed-wrap">
-    <div class="other-format-div">
-        <a href="/faq/" class="other-format"> <i class="far fa-code"></i> FAQ</a>
-        <a href="xml.html" class="other-format"> <i class="fas fa-code"></i> Format XML</a>
-        <a href="/onefile/" class="other-format"> <i class="far fa-circle"></i> One File</a>
-    </div>
-    <h1 class="focus-in-expand" id="top"> <i class="fas fa-layer-group"></i> Format JSON</h1>
-
-</div>
-<div class="main">
-    <div class="editor-group">
-        <span class="editor-title">JSON One</span>
-        <div id="toolbar">
-            <button id="format-edit-1"><i class="fas fa-stream"></i> Format</button>
-            <button id="minify-1"><i class="fas fa-microscope"></i> Minify </button>
-            <button id="paste-1"><i class="fas fa-paste"></i> Paste Over</button>
-            <button id="clear-1"><i class="fas fa-trash-alt"></i> Clear </button>
-            <button id="sortJson-1"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</button>
-            <button id="jsonPath"><i class="fa-solid fa-map-location-dot"></i> Json Path</button>
-            <button id="font-zoom-in" class="tooltip"><span class="tooltiptext">Larger</span><i class="fas fa-search-plus"></i></button>
-            <button id="font-zoom-reset" class="tooltip"><span class="tooltiptext">Reset</span><i class="fas fa-font"></i> </button>
-            <button id="font-zoom-out" class="tooltip"><span class="tooltiptext">Smaller</span><i class="fas fa-search-minus"></i> </button>
-            <button id="download-1" class="tooltip"><span class="tooltiptext">Download File</span><i class="fa-solid fa-download"></i></button>
-            <button id="copy-1" class="tooltip"><span class="tooltiptext">Copy</span><i class="fa-solid fa-copy"></i></button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="JSON :: Format JSON helps to format and validate json data. JSON formatter also provides tree view which helps to navigate through your JSON data. Welcome to FormatJSON, the ultimate JSON formatting tool that provides a fast, efficient, and secure way to format your JSON data. Our goal is to create a user-friendly and reliable tool that is accessible to everyone, regardless of technical knowledge or internet connection.
+            At FormatJSON, we believe in protecting the privacy and security of our users. That's why our tool is designed to be completely offline, ensuring that no data is saved or shared with anyone. Our tool is 100% client-side, meaning that all data remains on your device and is never transmitted to a server or saved in the cloud.
+            With FormatJSON, you can easily format your JSON data without the need for an internet connection. Simply load the page and you're ready to go. Our user-friendly interface allows you to quickly and easily format your JSON data into a readable and well-structured format. Whether you're a developer working with large amounts of data, or someone who simply wants to view JSON data in a more organized format, FormatJSON has got you covered.
+            We take pride in our commitment to providing users with a high-quality and reliable service. Our team is dedicated to continually improving our tool to ensure that it meets the needs of our users. We welcome feedback and suggestions, and are always looking for ways to make our tool even better.
+            Try FormatJSON today and see why it's the ultimate JSON formatting tool. With its fast, efficient, and secure features, you won't be disappointed. Whether you're working offline or online, FormatJSON is the perfect tool to help you quickly and easily format your JSON data.">
+        <meta name="keywords" content="JSON, json,  json online, online json, json reader, json viewer, JSON View, JSON Viewer, Best JSON Viewer, online json viewer, json editor, edit json, JSON Editor, JSON Editor Online, format json, JSON formatter,  Json string format, Online JSON Formatter, Json data format, JSON Formatter, Free Online JSON Formatter, JSON file format, Format JSON file, the ultimate JSON formatting tool, json beautifier, JSON Validator, json lint, validate json, JSON format,  json validator, JSON compare, compare JSON, JSON diff, compare json , compare two json, Compare two json files, sort json, json sort, sort json alphabetically, sort json keys, sort json ascending, download json, json download,  json path, find json path, generate json path, json key location, minify json, remove spaces from json, copy json, clone json">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/js/all.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+        if($(window).width() <= 950) {
+            window.location = "https://formatjson.com/onefile/";
+        }
+        });
+    </script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <title>Format JSON</title>
+    </head>
+    <body>
+        <div class="fullbleed-wrap">
+            <div class="other-format-div">
+                <a href="/faq/" class="other-format"> <i class="far fa-code"></i> FAQ</a>
+                <a href="xml.html" class="other-format"> <i class="fas fa-code"></i> Format XML</a>
+                <a href="/onefile/" class="other-format"> <i class="far fa-circle"></i> One File</a>
+            </div>
+            <h1 class="focus-in-expand" id="top"> <i class="fas fa-layer-group"></i> Format JSON</h1>
         </div>
-        <div id="editor1" class="editor"></div>
-    </div>
-    
-    <div class="editor-group">
-        <span class="editor-title">JSON Two</span>
-        <div id="toolbar">
-            <button id="format-edit-2"><i class="fas fa-stream"></i> Format</button>
-            <button id="minify-2"><i class="fas fa-microscope"></i> Minify </button>
-            <button id="paste-2"><i class="fas fa-paste"></i> Paste Over</button>
-            <button id="clear-2"><i class="fas fa-trash-alt"></i> Clear </button>
-            <button id="sortJson-2"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</button>
-            <button id="download-2" class="tooltip"><span class="tooltiptext">Download File</span><i class="fa-solid fa-download"></i></button>
-            <button id="copy-2" class="tooltip"><span class="tooltiptext">Copy</span><i class="fa-solid fa-copy"></i></button>
-            <button id="compare-json"> <a href="#compareJson" ><i class="fas fa-not-equal"></i> Load Diff </a></button>
+
+        <div class="main">
+            <div class="editor-group">
+            <span class="editor-title">JSON One</span>
+            <div id="toolbar">
+                <button id="format-edit-1"><i class="fas fa-stream"></i> Format</button>
+                <button id="minify-1"><i class="fas fa-microscope"></i> Minify </button>
+                <button id="paste-1"><i class="fas fa-paste"></i> Paste Over</button>
+                <button id="clear-1"><i class="fas fa-trash-alt"></i> Clear </button>
+                <button id="sortJson-1"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</button>
+                <button id="jsonPath"><i class="fa-solid fa-map-location-dot"></i> Json Path</button>
+                <button id="font-zoom-in" class="tooltip"><span class="tooltiptext">Larger</span><i class="fas fa-search-plus"></i></button>
+                <button id="font-zoom-reset" class="tooltip"><span class="tooltiptext">Reset</span><i class="fas fa-font"></i> </button>
+                <button id="font-zoom-out" class="tooltip"><span class="tooltiptext">Smaller</span><i class="fas fa-search-minus"></i> </button>
+                <button id="download-1" class="tooltip"><span class="tooltiptext">Download File</span><i class="fa-solid fa-download"></i></button>
+                <button id="copy-1" class="tooltip"><span class="tooltiptext">Copy</span><i class="fa-solid fa-copy"></i></button>
+            </div>
+            <div id="editor1" class="editor"></div>
         </div>
-        <div id="editor2" class="editor"></div>
-    </div>
-</div>
-<div class="fullbleed-wrap">
-    <div id="compareJson"><i class="fas fa-theater-masks"></i> JSON Compare</div>
-</div>
-<div class="editor-group">
-    <span class="editor-title">One vs Two</span>
-    <button id="refresh-diff"><i class="fas fa-not-equal"></i> Load Diff</button>
-    <button id="next-change"><i class="fas fa-arrow-down"></i> Next Change</button>
-    <button id="previous-change"><i class="fas fa-arrow-up"></i> Previous Change</button>
+        
+            <div class="editor-group">
+                <span class="editor-title">JSON Two</span>
+                <div id="toolbar">
+                    <button id="format-edit-2"><i class="fas fa-stream"></i> Format</button>
+                    <button id="minify-2"><i class="fas fa-microscope"></i> Minify </button>
+                    <button id="paste-2"><i class="fas fa-paste"></i> Paste Over</button>
+                    <button id="clear-2"><i class="fas fa-trash-alt"></i> Clear </button>
+                    <button id="sortJson-2"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</button>
+                    <button id="download-2" class="tooltip"><span class="tooltiptext">Download File</span><i class="fa-solid fa-download"></i></button>
+                    <button id="copy-2" class="tooltip"><span class="tooltiptext">Copy</span><i class="fa-solid fa-copy"></i></button>
+                    <button id="compare-json"> <a href="#compareJson" ><i class="fas fa-not-equal"></i> Load Diff </a></button>
+                </div>
+                <div id="editor2" class="editor"></div>
+            </div>
+        </div>
+        <div class="fullbleed-wrap">
+            <div id="compareJson"><i class="fas fa-theater-masks"></i> JSON Compare</div>
+        </div>
+        <div class="editor-group">
+            <span class="editor-title">One vs Two</span>
+            <button id="refresh-diff"><i class="fas fa-not-equal"></i> Load Diff</button>
+            <button id="next-change"><i class="fas fa-arrow-down"></i> Next Change</button>
+            <button id="previous-change"><i class="fas fa-arrow-up"></i> Previous Change</button>
+            <button id="back-top"> <a href="#top" > <i class="fas fa-arrow-circle-up"></i> Back to Top </a></button>
+            <div id="diff-editor" class="diff-editor"></div>
+        </div>
 
-    <button id="back-top"> <a href="#top" > <i class="fas fa-arrow-circle-up"></i> Back to Top </a></button>
-    <div id="diff-editor" class="diff-editor"></div>
-</div>
+        <div class="formatJson_box">
+            Format JSON helps to format and validate your JSON data.
+            Format JSON also provides tree view which helps to navigate through your JSON data.
+            You can compare your two JSON files and identify differences.
+            You can sort JSON alphabetically.
+            You can get JSON path to get location of each key in JSON.
+            You can download JSON file.
+            You can copy JSON files to clipboard.
+        </div>
 
-<div class="formatJson_box">
-    Format JSON helps to format and validate your JSON data.
-    Format JSON also provides tree view which helps to navigate through your JSON data.
-    You can compare your two JSON files and identify differences.
-    You can sort JSON alphabetically.
-    You can get JSON path to get location of each key in JSON.
-    You can download JSON file.
-    You can copy JSON files to clipboard.
-</div>
-
-<div class="formatJson_box">
-    <p> Format json, JSON format, JSON Formatter
-        JSON Viewer, JSON Editor Online, Best JSON Viewer, Free Online JSON Formatter,
-        JSON Validator, JSON file format, Format JSON file,
-        JSON View, Jedit, Online JSON Formatter,
-        JSON Editor, JSON compare, compare JSON, JSON diff, Json data format,
-        JSON string format, Compare two JSON files,
-        JSON sort, Sort JSON alphabetically, Sort JSON,
-        JSON path, get location of each key in JSON, get JSON Path,
-        Download JSON, download Json files,
-        Copy JSON files to clipboard.
-    </p>
-</div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/vs/loader.js"></script>
-<script src="main.js"></script>
-</body>
+        <div class="formatJson_box">
+            <p> Format json, JSON format, JSON Formatter
+                JSON Viewer, JSON Editor Online, Best JSON Viewer, Free Online JSON Formatter,
+                JSON Validator, JSON file format, Format JSON file,
+                JSON View, Jedit, Online JSON Formatter,
+                JSON Editor, JSON compare, compare JSON, JSON diff, Json data format,
+                JSON string format, Compare two JSON files,
+                JSON sort, Sort JSON alphabetically, Sort JSON,
+                JSON path, get location of each key in JSON, get JSON Path,
+                Download JSON, download Json files,
+                Copy JSON files to clipboard.
+            </p>
+        </div>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/vs/loader.js"></script>
+        <script src="main.js"></script>
+    </body>
 </html>
