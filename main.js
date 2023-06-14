@@ -122,6 +122,65 @@ function getPathObjectForInputObject(inputObject, parentKeyPath = "$.") {
     return pathObject
 }
 
+function downloadFile(data) {
+    var a = document.createElement("a");
+    var name = ""
+    while(name == "") {
+        name = prompt("Enter file name", "fileSavedFromFormatJson.json")
+        if(name == "") {
+            alert("File name cannot be empty. Please enter a name with .json as file extension")
+        }
+    }
+    if (!name ) {
+        return 0
+    }
+    a.download = name;
+    a.href = URL.createObjectURL(new Blob([data], {
+        type: "application/json"
+    }));
+    a.click()
+    URL.revokeObjectURL(a.href)
+    a.remove()
+}
+
+function promptJSONFileSelection() {
+    return new Promise((resolve, reject) => {
+      const input = document.createElement('input')
+      input.type = 'file'
+      input.accept = 'application/json'
+  
+      input.onchange = function(event) {
+        const file = event.target.files[0]
+        const reader = new FileReader()
+  
+        reader.onload = function(e) {
+          const jsonString = e.target.result
+          resolve(jsonString)
+        };
+  
+        reader.onerror = function(e) {
+          reject(new Error('Error reading file'))
+        }
+  
+        reader.readAsText(file)
+      }
+  
+      input.click()
+    })
+  }
+
+function updateAndFormatEditor(jsonString, editorNumber) {
+    if (editorNumber === 1) {
+        editor1.setValue(jsonString)
+        editor1.getAction("editor.action.formatDocument").run()
+    }
+
+    if (editorNumber === 2) {
+        editor2.setValue(jsonString)
+        editor2.getAction("editor.action.formatDocument").run()
+    }
+ }
+
   document.getElementById("format-edit-1").addEventListener("click", formatJson1)
   function formatJson1() {
       var jsonString = validateJson(editor1.getValue())
@@ -199,27 +258,6 @@ function generateJsonPath() {
   }
 }
 
-function downloadFile(data) {
-    var a = document.createElement("a");
-    var name = ""
-    while(name == "") {
-        name = prompt("Enter file name", "fileSavedFromFormatJson.json")
-        if(name == "") {
-            alert("File name cannot be empty. Please enter a name with .json as file extension")
-        }
-    }
-    if (!name ) {
-        return 0
-    }
-    a.download = name;
-    a.href = URL.createObjectURL(new Blob([data], {
-        type: "application/json"
-    }));
-    a.click()
-    URL.revokeObjectURL(a.href)
-    a.remove()
-}
-
 document.getElementById("download-1").addEventListener("click", download1)
 function download1() {
     var content = validateJson(editor1.getValue())
@@ -231,6 +269,14 @@ function copyToClipboard() {
   var copyText = editor1.getValue();
   navigator.clipboard.writeText(copyText)
   document.execCommand("copy");
+}
+
+
+document.getElementById("openFile-1").addEventListener("click", openFile) 
+function openFile(){
+    promptJSONFileSelection().then((jsonString) => {
+        updateAndFormatEditor(jsonString, 1)
+    });
 }
 
   document.getElementById("minify-2").addEventListener("click", minify2)
@@ -303,6 +349,13 @@ function copyToClipboard2() {
   var copyText = editor2.getValue();
   navigator.clipboard.writeText(copyText)
   document.execCommand("copy");
+}
+
+document.getElementById("openFile-2").addEventListener("click", openFile2) 
+function openFile2(){
+    promptJSONFileSelection().then((jsonString) => {
+        updateAndFormatEditor(jsonString, 2)
+    });
 }
 
   var originalModel = monaco.editor.createModel(editor1.getValue(), "text/json")
