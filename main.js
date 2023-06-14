@@ -145,28 +145,28 @@ function downloadFile(data) {
 
 function promptJSONFileSelection() {
     return new Promise((resolve, reject) => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'application/json';
+      const input = document.createElement('input')
+      input.type = 'file'
+      input.accept = 'application/json'
   
       input.onchange = function(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+        const file = event.target.files[0]
+        const reader = new FileReader()
   
         reader.onload = function(e) {
-          const jsonString = e.target.result;
-          resolve(jsonString);
+          const jsonString = e.target.result
+          resolve(jsonString)
         };
   
         reader.onerror = function(e) {
-          reject(new Error('Error reading file'));
-        };
+          reject(new Error('Error reading file'))
+        }
   
-        reader.readAsText(file);
-      };
+        reader.readAsText(file)
+      }
   
-      input.click();
-    });
+      input.click()
+    })
   }
 
 function updateAndFormatEditor(jsonString, editorNumber) {
