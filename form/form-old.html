@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card-section location-group-card-address">
+      <div class="shipping-location-address-container">
+        <h3 class="shipping-location-address-container__heading">
+          <span>Shipping Address</span>
+        </h3>
+        <div class="addresses-manager">
+          <form action="javascript://" class="address-form">
+            <div
+              class="v-m-bottom-ss address-form__cell address-form__first-name"
+            >
+              <div class="has-error">
+                <label class="das-input-label" for="firstName"
+                  ><div class="das-input-label__wrapper">
+                    <span>First Name</span>
+                  </div></label
+                ><input
+                  class="tb-input"
+                  autocomplete="given-name"
+                  id="firstName"
+                  name="firstName"
+                  aria-labelledby="first-name-help"
+                  maxlength="50"
+                  data-is-valid="false"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="v-m-bottom-ss address-form__cell address-form__last-name"
+            >
+              <div class="has-error">
+                <label class="das-input-label" for="lastName"
+                  ><div class="das-input-label__wrapper">
+                    <span>Last Name</span>
+                  </div></label
+                ><input
+                  class="tb-input"
+                  autocomplete="family-name"
+                  id="lastName"
+                  name="lastName"
+                  aria-labelledby="last-name-help"
+                  maxlength="50"
+                  data-is-valid="false"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="address-form__cell">
+              <div class="address__help">
+                <a
+                  class="button--link address-button"
+                  href="https://www.bestbuy.com/site/modals/shipping-to-a-military-address/pcmcat204400050018.c?id=pcmcat204400050018"
+                  activepageid="fulfillment"
+                  tabindex="0"
+                  >Military (AFO.FPO)</a
+                ><span aria-hidden="true"> | </span
+                ><a
+                  class="button--link address-button"
+                  href="https://www.bestbuy.com/site/modals/international-orders/pcmcat204400050019.c?id=pcmcat204400050019"
+                  activepageid="fulfillment"
+                  tabindex="0"
+                  >International Customers</a
+                >
+              </div>
+              <div class="has-error">
+                <label class="das-input-label" for="street"
+                  ><div class="das-input-label__wrapper">
+                    <span>Address</span>
+                  </div></label
+                >
+                <div class="autocomplete__wrapper">
+                  <button class="autocomplete__toggle" href="#">
+                    Hide Suggestions
+                  </button>
+                  <div>
+                    <input
+                      autocomplete="off"
+                      class="tb-input autocomplete__input"
+                      maxlength="35"
+                      name="street"
+                      id="street"
+                      data-is-valid="false"
+                      role="combobox"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-owns="suggestionsMenuId"
+                      aria-controls="suggestionsMenuId"
+                      aria-activedescendant=""
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-m-bottom-ss address-form__cell address-form__showAddress2Block address2_link"
+            >
+              <button
+                class="c-button-link address-form__showAddress2Link"
+                type="button"
+              >
+                <span>Add Apt #, Suite, Floor (optional)</span>
+              </button>
+            </div>
+            <div class="city-state-flex city-state-container">
+              <div class="city address-form__cell address-form__citycity">
+                <div class="has-error">
+                  <label class="das-input-label" for="city"
+                    ><div class="das-input-label__wrapper">
+                      <span>City</span>
+                    </div></label
+                  ><input
+                    class="tb-input"
+                    autocomplete="address-level2"
+                    id="city"
+                    name="city"
+                    aria-labelledby="city-help"
+                    maxlength="30"
+                    data-is-valid="false"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="v-m-bottom-ss state address-form__cell address-form__state state"
+              >
+                <div class="">
+                  <label class="das-input-label" for="state"
+                    ><div class="das-input-label__wrapper">
+                      <span>State</span>
+                    </div></label
+                  >
+                  <div
+                    class="tb-select-wrapper form-control c-dropdown das-select-dropdown"
+                  >
+                    <select
+                      autocomplete="off"
+                      class="tb-select"
+                      id="state"
+                      name="state"
+                      aria-labelledby="state-help"
+                      data-is-valid="false"
+                    >
+                      <option value="">Select</option>
+                      <option value="AL">AL</option>
+                      <option value="AK">AK</option>
+                      <option value="AA">AA</option>
+                      <option value="AE">AE</option>
+                      <option value="AP">AP</option>
+                      <option value="AZ">AZ</option>
+                      <option value="AR">AR</option>
+                      <option value="CA">CA</option>
+                      <option value="CO">CO</option>
+                      <option value="CT">CT</option>
+                      <option value="DC">DC</option>
+                      <option value="DE">DE</option>
+                      <option value="FL">FL</option>
+                      <option value="GA">GA</option>
+                      <option value="GU">GU</option>
+                      <option value="HI">HI</option>
+                      <option value="ID">ID</option>
+                      <option value="IL">IL</option>
+                      <option value="IN">IN</option>
+                      <option value="IA">IA</option>
+                      <option value="KS">KS</option>
+                      <option value="KY">KY</option>
+                      <option value="LA">LA</option>
+                      <option value="ME">ME</option>
+                      <option value="MD">MD</option>
+                      <option value="MA">MA</option>
+                      <option value="MI">MI</option>
+                      <option value="MN">MN</option>
+                      <option value="MS">MS</option>
+                      <option value="MO">MO</option>
+                      <option value="MT">MT</option>
+                      <option value="NE">NE</option>
+                      <option value="NV">NV</option>
+                      <option value="NH">NH</option>
+                      <option value="NJ">NJ</option>
+                      <option value="NM">NM</option>
+                      <option value="NY">NY</option>
+                      <option value="NC">NC</option>
+                      <option value="ND">ND</option>
+                      <option value="OH">OH</option>
+                      <option value="OK">OK</option>
+                      <option value="OR">OR</option>
+                      <option value="PA">PA</option>
+                      <option value="RI">RI</option>
+                      <option value="SC">SC</option>
+                      <option value="SD">SD</option>
+                      <option value="TN">TN</option>
+                      <option value="TX">TX</option>
+                      <option value="UT">UT</option>
+                      <option value="VT">VT</option>
+                      <option value="VA">VA</option>
+                      <option value="VI">VI</option>
+                      <option value="WA">WA</option>
+                      <option value="WV">WV</option>
+                      <option value="WI">WI</option>
+                      <option value="WY">WY</option></select
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      xml:space="preserve"
+                      aria-hidden="true"
+                      role="img"
+                      class="tb-select-dropdown-arrow"
+                    >
+                      <path
+                        d="M12 16c-.15 0-.31-.05-.44-.14l-6.25-4.5a.751.751 0 1 1 .88-1.22L12 14.33l5.81-4.19a.76.76 0 0 1 1.05.17c.24.34.17.8-.17 1.05l-6.25 4.5c-.13.09-.29.14-.44.14z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="v-m-bottom-ss address-form__cell address-form__zip">
+              <div class="zip-container">
+                <div class="zip-flex">
+                  <div class="has-error">
+                    <label class="das-input-label" for="zipcode"
+                      ><div class="das-input-label__wrapper">
+                        <span>ZIP Code</span>
+                      </div></label
+                    ><input
+                      class="tb-input"
+                      type="tel"
+                      autocomplete="postal-code"
+                      id="zipcode"
+                      name="zipcode"
+                      aria-labelledby="zipcode-help"
+                      maxlength="5"
+                      data-is-valid="false"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="zip-helper-flex"></div>
+              </div>
+            </div>
+          </form>
+          <div
+            class="checkbox checkbox-brand save-for-billing-address checkbox__container"
+          >
+            <div class="c-checkbox-wrapper flex align-items-center v-medium">
+              <span class="c-checkbox-brand"
+                ><input
+                  class="c-checkbox-input appearance-none border-25 rounded-25"
+                  type="checkbox"
+                  id="save-for-billing-address-Map {}" /></span
+              ><label
+                class="c-checkbox-label cursor-pointer font-weight-normal pt-100 pb-100 pl-100 mb-none"
+                for="save-for-billing-address-Map {}"
+                ><span>Use as billing address</span></label
+              >
+            </div>
+          </div>
+          <div class="new-address-form__actions-container">
+            <button
+              class="c-button c-button-secondary c-button-md new-address-form__button"
+              type="button"
+              data-track="Shipping: Save shipping address"
+              data-form-ready-for-saving="false"
+            >
+              <span>Apply</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
